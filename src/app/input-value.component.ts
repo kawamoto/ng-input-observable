@@ -1,12 +1,17 @@
-import { Component, DoCheck, ChangeDetectionStrategy } from "@angular/core";
-import { interval } from "rxjs";
-import { take } from "rxjs/operators";
+import {
+  Component,
+  DoCheck,
+  ChangeDetectionStrategy,
+  NgZone
+} from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
 @Component({
   selector: "app-input-value",
   template: `
     <div>
       <h4>InputValue</h4>
+      <button (click)="emitNewValue()">emitNewValue</button>
       <ng-container *ngIf="data$ | async as data">
         <app-input-value-child [data]="data"></app-input-value-child>
       </ng-container>
@@ -17,8 +22,25 @@ import { take } from "rxjs/operators";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputValueComponent implements DoCheck {
-  data$ = interval(2000).pipe(take(4));
+  data$ = new BehaviorSubject<number>(0);
+  zone: NgZone;
+
+  constructor(zone: NgZone) {
+    this.zone = zone;
+    zone.runOutsideAngular(() => {
+      setTimeout(() => {
+        this.data$.next(this.data$.value + 10);
+      }, 2000);
+    });
+  }
+
   ngDoCheck() {
     console.log("DoCheck: InputValue");
+  }
+
+  emitNewValue() {
+    this.zone.runOutsideAngular(() => {
+      this.data$.next(this.data$.value + 1);
+    });
   }
 }
