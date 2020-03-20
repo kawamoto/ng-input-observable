@@ -16,6 +16,9 @@ import { BehaviorSubject } from "rxjs";
         <app-input-value-child [data]="data"></app-input-value-child>
       </ng-container>
       <app-static trackName="static A-1"></app-static>
+      <div>
+        {{ data2 | impurePipe }}
+      </div>
     </div>
   `,
   styles: [],
@@ -23,6 +26,7 @@ import { BehaviorSubject } from "rxjs";
 })
 export class InputValueComponent implements DoCheck {
   data$ = new BehaviorSubject<number>(0);
+  data2 = "data2";
   zone: NgZone;
 
   constructor(zone: NgZone) {
