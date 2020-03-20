@@ -17,6 +17,9 @@ import { BehaviorSubject } from "rxjs";
       <div>
         {{ data2 | impurePipe }}
       </div>
+      <div>
+        {{ data2 | purePipe }}
+      </div>
     </div>
   `,
   styles: [],

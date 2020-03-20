@@ -8,6 +8,7 @@ import { InputValueChildComponent } from "./input-value-child.component";
 import { InputObservableComponent } from "./input-observable.component";
 import { InputObservablueChildComponent } from "./input-observable-child.component";
 import { ImpurePipe } from "./impure-pipe";
+import { PurePipe } from "./pure-pipe";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ImpurePipe } from "./impure-pipe";
     InputValueChildComponent,
     InputObservableComponent,
     InputObservablueChildComponent,
-    ImpurePipe
+    ImpurePipe,
+    PurePipe
   ],
   imports: [BrowserModule],
   providers: [],
