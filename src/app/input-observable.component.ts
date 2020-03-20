@@ -20,6 +20,15 @@ import { BehaviorSubject } from "rxjs";
       <div>
         {{ data2 | purePipe }}
       </div>
+      <div>
+        {{ data2 | purePipe | impurePipe }}
+      </div>
+      <div>
+        {{ data2$ | async | impurePipe }}
+      </div>
+      <div>
+        {{ data2$ | async | purePipe }}
+      </div>
     </div>
   `,
   styles: [],
@@ -27,7 +36,8 @@ import { BehaviorSubject } from "rxjs";
 })
 export class InputObservableComponent implements DoCheck {
   data$ = new BehaviorSubject<number>(0);
-  data2 = "data2";
+  data2 = 2;
+  data2$ = new BehaviorSubject<number>(3);
   zone: NgZone;
 
   constructor(zone: NgZone) {
