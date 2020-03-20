@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 
 @Component({
   selector: "app-root",
@@ -10,8 +10,12 @@ import { Component } from "@angular/core";
       <app-static trackName="static C"></app-static>
     </div>
   `,
-  styles: []
+  styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   title = "ng-input-observable";
+  ngDoCheck() {
+    console.log("DoCheck: App");
+  }
 }

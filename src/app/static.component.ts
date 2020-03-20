@@ -1,4 +1,9 @@
-import { Component, DoCheck, Input } from "@angular/core";
+import {
+  Component,
+  DoCheck,
+  Input,
+  ChangeDetectionStrategy
+} from "@angular/core";
 
 @Component({
   selector: "app-static",
@@ -7,7 +12,8 @@ import { Component, DoCheck, Input } from "@angular/core";
       <h4>static</h4>
     </div>
   `,
-  styles: []
+  styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StaticComponent implements DoCheck {
   @Input() trackName: string;

@@ -1,5 +1,6 @@
-import { Component, DoCheck } from "@angular/core";
+import { Component, DoCheck, ChangeDetectionStrategy } from "@angular/core";
 import { interval } from "rxjs";
+import { take } from "rxjs/operators";
 
 @Component({
   selector: "app-input-value",
@@ -12,10 +13,11 @@ import { interval } from "rxjs";
       <app-static trackName="static A-1"></app-static>
     </div>
   `,
-  styles: []
+  styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputValueComponent implements DoCheck {
-  data$ = interval(1000);
+  data$ = interval(2000).pipe(take(4));
   ngDoCheck() {
     console.log("DoCheck: InputValue");
   }

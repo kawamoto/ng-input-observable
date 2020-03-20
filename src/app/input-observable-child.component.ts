@@ -1,4 +1,9 @@
-import { Component, DoCheck, Input } from "@angular/core";
+import {
+  Component,
+  DoCheck,
+  Input,
+  ChangeDetectionStrategy
+} from "@angular/core";
 
 @Component({
   selector: "app-input-observable-child",
@@ -8,7 +13,8 @@ import { Component, DoCheck, Input } from "@angular/core";
       <app-static trackName="static B-2"></app-static>
     </div>
   `,
-  styles: []
+  styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputObservablueChildComponent implements DoCheck {
   @Input() data$;
