@@ -6,7 +6,8 @@ import { Component } from "@angular/core";
     <div style="text-align:center" class="content">
       <h1>Welcome to {{ title }}!</h1>
       <app-input-value></app-input-value>
-      <app-static></app-static>
+      <app-input-observable></app-input-observable>
+      <app-static trackName="static C"></app-static>
     </div>
   `,
   styles: []

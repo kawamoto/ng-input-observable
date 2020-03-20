@@ -9,6 +9,7 @@ import { interval } from "rxjs";
       <ng-container *ngIf="data$ | async as data">
         <app-input-value-child [data]="data"></app-input-value-child>
       </ng-container>
+      <app-static trackName="static A-1"></app-static>
     </div>
   `,
   styles: []
@@ -16,6 +17,6 @@ import { interval } from "rxjs";
 export class InputValueComponent implements DoCheck {
   data$ = interval(1000);
   ngDoCheck() {
-    console.log("DoCheck: Static");
+    console.log("DoCheck: InputValue");
   }
 }

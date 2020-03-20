@@ -1,4 +1,4 @@
-import { Component, DoCheck } from "@angular/core";
+import { Component, DoCheck, Input } from "@angular/core";
 
 @Component({
   selector: "app-static",
@@ -10,7 +10,8 @@ import { Component, DoCheck } from "@angular/core";
   styles: []
 })
 export class StaticComponent implements DoCheck {
+  @Input() trackName: string;
   ngDoCheck() {
-    console.log("DoCheck: Static");
+    console.log(`DoCheck: Static: ${this.trackName}`);
   }
 }

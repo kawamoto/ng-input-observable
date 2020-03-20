@@ -5,6 +5,7 @@ import { Component, DoCheck, Input } from "@angular/core";
   template: `
     <div>
       {{ data }}
+      <app-static trackName="static A-2"></app-static>
     </div>
   `,
   styles: []
@@ -12,6 +13,6 @@ import { Component, DoCheck, Input } from "@angular/core";
 export class InputValueChildComponent implements DoCheck {
   @Input() data;
   ngDoCheck() {
-    console.log("DoCheck: Static");
+    console.log("DoCheck: InputValueChild");
   }
 }
